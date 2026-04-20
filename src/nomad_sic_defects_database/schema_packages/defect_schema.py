@@ -46,7 +46,7 @@ class SiCDefect(Schema):
         type=str,
         description='Type of the defect',
         a_eln=ELNAnnotation(
-            component = 'ELNComponentEnum',
+            component = 'EnumEditQuantity',
             label = 'Defect Type',
             options = ['Vacancy', 'Interstitial', 'Substitutional'],
         ),
@@ -56,7 +56,7 @@ class SiCDefect(Schema):
         type=int,
         description='Charge of the defect',
         a_eln=ELNAnnotation(
-            component = 'ELNComponentEnum',
+            component = 'EnumEditQuantity',
             label = 'Defect Charge',
             options = [-2, -1, 0, 1, 2],
         ),
@@ -66,7 +66,7 @@ class SiCDefect(Schema):
         type=float,
         description='Energy level of the defect in eV',
         a_eln=ELNAnnotation(
-            component = 'ELNComponentEnum',
+            component = 'NumberEditQuantity',
             label = 'Defect Level (eV)',
         ),
     )
