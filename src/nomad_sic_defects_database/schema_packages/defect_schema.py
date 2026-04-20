@@ -56,9 +56,8 @@ class SiCDefect(Schema):
         type=int,
         description='Charge of the defect',
         a_eln=ELNAnnotation(
-            component = 'EnumEditQuantity',
+            component = 'NumberEditQuantity',
             label = 'Defect Charge',
-            options = [-2, -1, 0, 1, 2],
         ),
     )
 
