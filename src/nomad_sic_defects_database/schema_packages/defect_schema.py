@@ -12,8 +12,15 @@ if TYPE_CHECKING:
 
 from nomad.config import config
 from nomad.datamodel.data import Schema
-from nomad.datamodel.metainfo.annotations import ELNAnnotation, ELNComponentEnum
-from nomad.metainfo import Quantity, SchemaPackage
+from nomad.datamodel.metainfo.annotations import (
+    ELNAnnotation,
+    SectionProperties,
+)
+from nomad.metainfo import (
+    Quantity,
+    SchemaPackage,
+    Section,
+)
 
 configuration = config.get_plugin_entry_point(
     'nomad_sic_defects_database.schema_packages:schema_package_entry_point'
@@ -25,7 +32,7 @@ m_package = SchemaPackage()
 class SiCDefect(Schema):
     m_def = Section(
         a_eln=ELNAnnotation(
-            propertiers=SectionProperties(
+            properties=SectionProperties(
                 order=[
                     'defect_name',
                     'defect_type',
@@ -40,7 +47,7 @@ class SiCDefect(Schema):
         type=str,
         description='Name of the defect',
         a_eln=ELNAnnotation(
-            component = RichTextEditQuantity,
+            component = 'RichTextEditQuantity',
             label = 'Defect Name',
         ),
     )
@@ -49,7 +56,7 @@ class SiCDefect(Schema):
         type=str,
         description='Type of the defect',
         a_eln=ELNAnnotation(
-            component = ELNComponentEnum,
+            component = 'ELNComponentEnum',
             label = 'Defect Type',
             options = ['Vacancy', 'Interstitial', 'Substitutional'],
         ),
@@ -59,7 +66,7 @@ class SiCDefect(Schema):
         type=int,
         description='Charge of the defect',
         a_eln=ELNAnnotation(
-            component = ELNComponentEnum,
+            component = 'ELNComponentEnum',
             label = 'Defect Charge',
             options = [-2, -1, 0, 1, 2],
         ),
@@ -69,7 +76,7 @@ class SiCDefect(Schema):
         type=float,
         description='Energy level of the defect in eV',
         a_eln=ELNAnnotation(
-            component = ELNComponentEnum,
+            component = 'ELNComponentEnum',
             label = 'Defect Level (eV)',
         ),
     )
