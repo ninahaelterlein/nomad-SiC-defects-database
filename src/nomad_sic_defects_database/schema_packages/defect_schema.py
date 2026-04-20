@@ -27,7 +27,7 @@ class SiCDefect(Schema):
                     'defect_name',
                     'defect_type',
                     'defect_charge',
-                    'defect_leverl',
+                    'defect_level',
                 ],
             )
         )
