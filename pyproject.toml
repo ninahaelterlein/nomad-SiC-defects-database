@@ -133,7 +133,7 @@ schema_package_entry_point = "nomad_sic_defects_database.schema_packages:schema_
 
 app_entry_point = "nomad_sic_defects_database.apps:app_entry_point"
 
-
+defect = "nomad_sic_defects_database.schema_packages:defect"
 
 [tool.cruft]
 # Avoid updating workflow files, this leads to permissions issues
