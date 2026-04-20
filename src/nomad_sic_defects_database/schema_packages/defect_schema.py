@@ -22,10 +22,6 @@ from nomad.metainfo import (
     Section,
 )
 
-configuration = config.get_plugin_entry_point(
-    'nomad_sic_defects_database.schema_packages:schema_package_entry_point'
-)
-
 m_package = SchemaPackage()
 
 
