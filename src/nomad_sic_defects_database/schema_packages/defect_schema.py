@@ -15,6 +15,7 @@ from nomad.metainfo import (
     SchemaPackage,
     Section,
 )
+from nomad.metainfo.metainfo import MEnum
 
 m_package = SchemaPackage()
 
