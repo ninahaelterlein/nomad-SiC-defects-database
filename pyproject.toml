@@ -37,7 +37,7 @@ dev = [
     "pytest",
     "structlog",
     "mkdocs",
-   "mkdocs-material>=8.1.1",
+    "mkdocs-material>=8.1.1",
     "pymdown-extensions",
     "mkdocs-click",
     "pytest-asyncio",
@@ -129,11 +129,8 @@ where = ["src"]
 
 [project.entry-points.'nomad.plugin']
 
-#schema_package_entry_point = "nomad_sic_defects_database.schema_packages:schema_package_entry_point"
-
-#app_entry_point = "nomad_sic_defects_database.apps:app_entry_point"
-
 defect = "nomad_sic_defects_database.schema_packages:defect"
+sic_defects_database = "nomad_sic_defects_database.apps:sic_defects_database"
 
 [tool.cruft]
 # Avoid updating workflow files, this leads to permissions issues
