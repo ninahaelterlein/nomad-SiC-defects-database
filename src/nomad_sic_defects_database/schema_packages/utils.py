@@ -1,6 +1,9 @@
 """here, the results section will be defined/worked on"""
 
-from nomad.datamodel.results import Properties
+from nomad.datamodel.results import (
+    Properties,
+    Results,
+)
 from nomad.metainfo import (
     MSection,
     Quantity,
@@ -99,3 +102,11 @@ class MyProperties(Properties):
         sub_section=Defect.m_def,
                 repeats=False,
     )
+
+def add_defect_results(archive):
+    if archive.results is None:
+        archive.results = Results()
+    if archive.results.properties is None:
+        archive.results.properties = MyProperties()
+    if archive.results.properties.defect is None:
+        archive.results.properties.defect = Defect()
