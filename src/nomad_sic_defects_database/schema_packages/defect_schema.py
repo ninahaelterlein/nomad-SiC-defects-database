@@ -10,10 +10,18 @@ from nomad.datamodel.metainfo.annotations import (
     ELNAnnotation,
     SectionProperties,
 )
+from nomad.datamodel.results import (
+    Results,
+)
 from nomad.metainfo import (
     Quantity,
     SchemaPackage,
     Section,
+)
+
+from .utils import (
+    Defect,
+    MyProperties,
 )
 
 m_package = SchemaPackage()
@@ -74,6 +82,20 @@ class SiCDefect(Schema):
         ),
     )
 
-# delete the entire normalize method
+    def normalize(self, archive, logger):
+        super().normalize(archive, logger)
+
+        if archive.results is None:
+            archive.results = Results()
+    
+        if archive.results.properties is None:
+            archive.results.properties = MyProperties()
+    
+        if archive.results.properties.defect is None:
+            archive.results.properties.defect = Defect()
+
+        archive.results.properties.defect.name = self.defect_name
+
+
 
 m_package.__init_metainfo__()
