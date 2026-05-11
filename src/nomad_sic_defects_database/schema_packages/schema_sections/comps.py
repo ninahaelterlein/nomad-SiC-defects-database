@@ -3,8 +3,7 @@
 *name, extrinsic elements, intrinsic components and microscopic defects*
 
 ToDo: 
-add extrinsic elements list,
-add intrinsic components list,
+add more suggestions to the intrinsic components list,
 """
 
 from nomad.datamodel.data import ArchiveSection
@@ -14,13 +13,12 @@ from ..utils import add_defect_results
 
 
 class Comps(ArchiveSection):
-    """components of the defect"""
 
     extrinsic_elements = Quantity(
         type=str,
         shape=['*'],
         description="""
-        Extrinsic elements involved in the defect
+        Extrinsic elements involved in the defect (one per entry, eg 'N', 'Al', 'B', ...)
         """,
         a_eln=dict(
             component = 'StringEditQuantity',
@@ -35,6 +33,14 @@ class Comps(ArchiveSection):
         """,
         a_eln=dict(
             component = 'StringEditQuantity',
+            props = dict(
+                suggestions=[
+                    'V_Si',
+                    'V_C',
+                    'Si_i',
+                    'C_i',
+                ]
+            )
         ),  
     )
 
@@ -54,3 +60,7 @@ class Comps(ArchiveSection):
         add_defect_results(archive)
         if self.microscopic_defect:
             archive.results.properties.defect.microscopic_defect = self.microscopic_defect
+        if self.extrinsic_elements:
+            archive.results.properties.defect.extrinsic_elements = self.extrinsic_elements
+        if self.intrinsic_components:
+            archive.results.properties.defect.intrinsic_components = self.intrinsic_components

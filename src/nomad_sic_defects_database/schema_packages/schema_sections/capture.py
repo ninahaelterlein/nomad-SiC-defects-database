@@ -2,7 +2,7 @@
 
 *electrical capture cross section, capture mechanism*
 
-ToDo: add capture mechanism options
+ToDo:
 """
 
 from nomad.datamodel.data import ArchiveSection
@@ -12,18 +12,17 @@ from ..utils import add_defect_results
 
 
 class Capture(ArchiveSection):
-    """capture related quantities of defects"""
 
     electrical_capture_cross_section = Quantity(
         type=float,
-        unit = 'cm^2',
+        unit = 'cm**2',
         shape=[],
         description="""
         Electrical capture cross section of the defect
         """,
         a_eln=dict(
             component = 'NumberEditQuantity',
-            default_display_unit = 'cm^2',
+            default_display_unit = 'cm**2',
         ),
     )
 
@@ -35,6 +34,13 @@ class Capture(ArchiveSection):
         """,
         a_eln=dict(
             component = 'StringEditQuantity',
+            props = dict(
+                suggestions=[
+                    'multi-phonon capture',
+                    'cascade capture',
+                    'other',
+                ]
+            )
         ),
     )
 

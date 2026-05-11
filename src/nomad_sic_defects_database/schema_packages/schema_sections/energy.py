@@ -12,7 +12,6 @@ from ..utils import add_defect_results
 
 
 class Energy(ArchiveSection):
-    """Energy levels of the defect"""
 
     energy_level_valband = Quantity(
         type=float,

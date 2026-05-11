@@ -10,7 +10,6 @@ from ..utils import add_defect_results
 
 
 class Charge(ArchiveSection):
-    """charge related quantities of defects"""
 
     initial_charge_state = Quantity(
         type=int,
