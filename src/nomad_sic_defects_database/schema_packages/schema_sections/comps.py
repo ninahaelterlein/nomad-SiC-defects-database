@@ -32,7 +32,7 @@ class Comps(ArchiveSection):
         Intrinsic components involved in the defect
         """,
         a_eln=dict(
-            component = 'StringEditQuantity',
+            component = 'EnumEditQuantity',
             props = dict(
                 suggestions=[
                     'V_Si',

@@ -8,4 +8,4 @@ def test_normalizer():
     entry_archive = parse(test_file)[0]
     normalize_all(entry_archive)
 
-    assert entry_archive.data.microscopic_defect == 'Vsi'
+    assert entry_archive.data.comps.microscopic_defect == "Vsi"

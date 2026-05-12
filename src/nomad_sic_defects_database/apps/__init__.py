@@ -1,6 +1,8 @@
 from nomad.config.models.plugins import AppEntryPoint
 
-from nomad_sic_defects_database.apps.sic_database_app import sic_defects_database_app
+from nomad_sic_defects_database.apps.sic_defects_database_app import (
+    sic_defects_database_app,
+)
 
 sic_defects_database = AppEntryPoint(
     name='The SiC Defects Database',

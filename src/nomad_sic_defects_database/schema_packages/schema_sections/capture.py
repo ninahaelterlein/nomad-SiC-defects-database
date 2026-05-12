@@ -33,7 +33,7 @@ class Capture(ArchiveSection):
         Capture mechanism of the defect
         """,
         a_eln=dict(
-            component = 'StringEditQuantity',
+            component = 'EnumEditQuantity',
             props = dict(
                 suggestions=[
                     'multi-phonon capture',

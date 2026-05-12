@@ -1,3 +1,12 @@
 data:
-  m_def: nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps
-  microscopic_defect: Vsi
+  m_def: nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect
+
+  comps:
+    microscopic_defect: Vsi
+
+  charge:
+    initial_charge_state: 0
+    charge_transition: -1
+
+  capture:
+    capture_mechanism: multi-phonon capture
