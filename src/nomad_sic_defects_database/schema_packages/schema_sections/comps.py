@@ -7,8 +7,8 @@ add more suggestions to the intrinsic components list,
 """
 
 from nomad.datamodel.data import ArchiveSection
-from nomad.metainfo import Quantity
 from nomad.datamodel.results import Material
+from nomad.metainfo import Quantity
 
 from ..utils import add_defect_results
 

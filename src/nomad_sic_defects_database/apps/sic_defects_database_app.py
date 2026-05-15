@@ -15,8 +15,8 @@ import yaml
 from nomad.config.models.ui import (
     App,
     Column,
-    SearchQuantities,
     Dashboard,
+    SearchQuantities,
 )
 
 # Access the YAML file packaged in the module

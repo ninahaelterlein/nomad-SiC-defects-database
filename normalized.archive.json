@@ -1,0 +1,497 @@
+{
+  "data": {
+    "m_def": "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+    "comps": {
+      "extrinsic_elements": [
+        "N"
+      ],
+      "intrinsic_components": [
+        "Vsi"
+      ],
+      "microscopic_defect": "Vsi"
+    },
+    "energy": {
+      "energy_level_valband": 0.5,
+      "energy_level_conband": 1.5
+    },
+    "charge": {
+      "initial_charge_state": 0,
+      "charge_transition": -1
+    },
+    "capture": {
+      "capture_mechanism": "multi-phonon capture"
+    },
+    "results_search": {
+      "extrinsic_elements": [
+        "N"
+      ],
+      "intrinsic_components": [
+        "Vsi"
+      ],
+      "microscopic_defect": "Vsi",
+      "initial_charge_state": 0,
+      "charge_transition": -1.0,
+      "capture_mechanism": "multi-phonon capture",
+      "energy_level": 0.5
+    }
+  },
+  "metadata": {
+    "entry_name": "test.archive.yaml",
+    "entry_type": "SiCDefect",
+    "mainfile": "/home/nomad/nomad-distro-dev/packages/nomad-SiC-defects-database/tests/data/test.archive.yaml",
+    "text_search_contents": [
+      "multi-phonon capture",
+      "N",
+      "Vsi"
+    ],
+    "n_quantities": 37,
+    "quantities": [
+      "",
+      "data",
+      "data.capture",
+      "data.capture.capture_mechanism",
+      "data.charge",
+      "data.charge.charge_transition",
+      "data.charge.initial_charge_state",
+      "data.comps",
+      "data.comps.extrinsic_elements",
+      "data.comps.intrinsic_components",
+      "data.comps.microscopic_defect",
+      "data.energy",
+      "data.energy.energy_level_conband",
+      "data.energy.energy_level_valband",
+      "data.results_search",
+      "data.results_search.capture_mechanism",
+      "data.results_search.charge_transition",
+      "data.results_search.energy_level",
+      "data.results_search.extrinsic_elements",
+      "data.results_search.initial_charge_state",
+      "data.results_search.intrinsic_components",
+      "data.results_search.microscopic_defect",
+      "metadata",
+      "metadata.entry_name",
+      "metadata.entry_type",
+      "metadata.mainfile",
+      "metadata.quantities",
+      "metadata.section_defs",
+      "metadata.section_defs.definition_id",
+      "metadata.section_defs.definition_qualified_name",
+      "metadata.section_defs.used_directly",
+      "metadata.sections",
+      "results",
+      "results.material",
+      "results.material.elements",
+      "results.properties",
+      "results.properties.defect",
+      "results.properties.defect.capture_mechanism",
+      "results.properties.defect.charge_transition",
+      "results.properties.defect.energy_level",
+      "results.properties.defect.extrinsic_elements",
+      "results.properties.defect.initial_charge_state",
+      "results.properties.defect.intrinsic_components",
+      "results.properties.defect.microscopic_defect"
+    ],
+    "sections": [
+      "nomad.datamodel.datamodel.EntryArchive",
+      "nomad.datamodel.datamodel.EntryMetadata",
+      "nomad.datamodel.results.Material",
+      "nomad.datamodel.results.Results",
+      "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+      "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection",
+      "nomad_sic_defects_database.schema_packages.schema_sections.capture.Capture",
+      "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge",
+      "nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps",
+      "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy",
+      "nomad_sic_defects_database.schema_packages.utils.Defect",
+      "nomad_sic_defects_database.schema_packages.utils.MyProperties"
+    ],
+    "section_defs": [
+      {
+        "definition_qualified_name": "nomad.datamodel.data.ArchiveSection",
+        "definition_id": "a4fc26727b8b3b1711ff8cea9896ac1910987509",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.data.EntryData",
+        "definition_id": "486f476f18785f5f4bcbac10db7304d7de35636b",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.datamodel.EntryArchive",
+        "definition_id": "bcc6ac73717e02b9f169171882ac0a7375341892",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.datamodel.EntryMetadata",
+        "definition_id": "089b7260031778a419dd5f905453a6ee10eb74b6",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.results.Material",
+        "definition_id": "c42263dc2c5fcb455a85f3fbaa818a39285514b7",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.results.Properties",
+        "definition_id": "0c07391238cf25ac1e6bdc2fea220cff66a8a350",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad.datamodel.results.Results",
+        "definition_id": "1c20cefadcf10cab672aae434168de685180574a",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition_id": "c040398ca89522ed2bc5b7efb0415100f376c741",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection",
+        "definition_id": "e8eeb7e87b2a3b9e5eeb936a830bbdcd8163d452",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.schema_sections.capture.Capture",
+        "definition_id": "0dbf27a3d6afa1960369f07d191d28717eb2a9e8",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge",
+        "definition_id": "4c3e90c6b5b25af2202189ba21cc8318b9f0426a",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps",
+        "definition_id": "b31d68343a9573ba935e5f782ed2443e5ec3bec8",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy",
+        "definition_id": "b6cadd3794c4d6953aa64d73e92b548f9eab4e84",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.utils.Defect",
+        "definition_id": "19116b7e24624803b880ebae9440e944cfca7902",
+        "used_directly": true
+      },
+      {
+        "definition_qualified_name": "nomad_sic_defects_database.schema_packages.utils.MyProperties",
+        "definition_id": "afb06ab9c87f481edcd032bbb8feb3fe8027ba7f",
+        "used_directly": true
+      }
+    ],
+    "search_quantities": [
+      {
+        "id": "data.comps.microscopic_defect#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps.microscopic_defect",
+        "path_archive": "data.comps.microscopic_defect",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "comps",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps"
+            ]
+          },
+          "3": {
+            "path": "microscopic_defect",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.comps.Comps"
+            ]
+          }
+        },
+        "str_value": "Vsi"
+      },
+      {
+        "id": "data.charge.initial_charge_state#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge.initial_charge_state",
+        "path_archive": "data.charge.initial_charge_state",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "charge",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge"
+            ]
+          },
+          "3": {
+            "path": "initial_charge_state",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge"
+            ]
+          }
+        },
+        "int_value": 0
+      },
+      {
+        "id": "data.charge.charge_transition#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge.charge_transition",
+        "path_archive": "data.charge.charge_transition",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "charge",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge"
+            ]
+          },
+          "3": {
+            "path": "charge_transition",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.charge.Charge"
+            ]
+          }
+        },
+        "int_value": -1
+      },
+      {
+        "id": "data.capture.capture_mechanism#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.capture.Capture.capture_mechanism",
+        "path_archive": "data.capture.capture_mechanism",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "capture",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.capture.Capture"
+            ]
+          },
+          "3": {
+            "path": "capture_mechanism",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.capture.Capture"
+            ]
+          }
+        },
+        "str_value": "multi-phonon capture"
+      },
+      {
+        "id": "data.energy.energy_level_valband#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy.energy_level_valband",
+        "path_archive": "data.energy.energy_level_valband",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "energy",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy"
+            ]
+          },
+          "3": {
+            "path": "energy_level_valband",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy"
+            ]
+          }
+        },
+        "float_value": 0.5
+      },
+      {
+        "id": "data.energy.energy_level_conband#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy.energy_level_conband",
+        "path_archive": "data.energy.energy_level_conband",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "energy",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy"
+            ]
+          },
+          "3": {
+            "path": "energy_level_conband",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.energy.Energy"
+            ]
+          }
+        },
+        "float_value": 1.5
+      },
+      {
+        "id": "data.results_search.energy_level#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection.energy_level",
+        "path_archive": "data.results_search.energy_level",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "results_search",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          },
+          "3": {
+            "path": "energy_level",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          }
+        },
+        "float_value": 0.5
+      },
+      {
+        "id": "data.results_search.capture_mechanism#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection.capture_mechanism",
+        "path_archive": "data.results_search.capture_mechanism",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "results_search",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          },
+          "3": {
+            "path": "capture_mechanism",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          }
+        },
+        "str_value": "multi-phonon capture"
+      },
+      {
+        "id": "data.results_search.initial_charge_state#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection.initial_charge_state",
+        "path_archive": "data.results_search.initial_charge_state",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "results_search",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          },
+          "3": {
+            "path": "initial_charge_state",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          }
+        },
+        "int_value": 0
+      },
+      {
+        "id": "data.results_search.charge_transition#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection.charge_transition",
+        "path_archive": "data.results_search.charge_transition",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "results_search",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          },
+          "3": {
+            "path": "charge_transition",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          }
+        },
+        "float_value": -1.0
+      },
+      {
+        "id": "data.results_search.microscopic_defect#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect",
+        "definition": "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection.microscopic_defect",
+        "path_archive": "data.results_search.microscopic_defect",
+        "segments": {
+          "1": {
+            "path": "data",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect"
+            ]
+          },
+          "2": {
+            "path": "results_search",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          },
+          "3": {
+            "path": "microscopic_defect",
+            "definitions": [
+              "nomad_sic_defects_database.schema_packages.schema_sections.DefectSearchProjection.DefectSearchProjection"
+            ]
+          }
+        },
+        "str_value": "Vsi"
+      }
+    ]
+  },
+  "results": {
+    "material": {
+      "elements": [
+        "N"
+      ]
+    },
+    "properties": {
+      "m_def": "nomad_sic_defects_database.schema_packages.utils.MyProperties",
+      "defect": {
+        "extrinsic_elements": [
+          "N"
+        ],
+        "intrinsic_components": [
+          "Vsi"
+        ],
+        "microscopic_defect": "Vsi",
+        "initial_charge_state": 0,
+        "charge_transition": -1,
+        "energy_level": 0.5,
+        "capture_mechanism": "multi-phonon capture"
+      }
+    }
+  }
+}

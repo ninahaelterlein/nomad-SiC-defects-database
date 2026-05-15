@@ -8,6 +8,7 @@ same quantities that are defined in the results section.
 from nomad.datamodel.data import ArchiveSection
 from nomad.metainfo import Quantity
 
+
 class DefectSearchProjection(ArchiveSection):
 
     name = Quantity(

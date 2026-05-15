@@ -3,6 +3,8 @@ data:
 
   comps:
     microscopic_defect: Vsi
+    extrinsic_elements: [N]
+    intrinsic_components: [Vsi]
 
   charge:
     initial_charge_state: 0
@@ -10,3 +12,7 @@ data:
 
   capture:
     capture_mechanism: multi-phonon capture
+
+  energy:
+    energy_level_valband: 0.5
+    energy_level_conband: 1.5

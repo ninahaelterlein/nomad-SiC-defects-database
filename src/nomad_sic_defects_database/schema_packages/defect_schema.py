@@ -22,8 +22,8 @@ from .schema_sections import (
     Capture,
     Charge,
     Comps,
-    Energy,
     DefectSearchProjection,
+    Energy,
 )
 
 m_package = SchemaPackage()
