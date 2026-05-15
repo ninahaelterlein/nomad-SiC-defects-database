@@ -40,46 +40,40 @@ sic_defects_database_app = App(
     search_quantities = SearchQuantities(include=[f'*#{schema}']),
     columns = [
         Column(
-            search_quantity='data.comps.extrinsic_elements',
+            search_quantity='results.material.elements',
             selected=False,
             label='Extrinsic Elements',
         ),
         Column(
-            search_quantity='data.comps.intrinsic_components',
+            search_quantity='data.results_search.intrinsic_components',
             selected=False,
             label='Intrinsic Elements',
         ),
         Column(
-            search_quantity='data.charge.initial_charge_state',
+            search_quantity='data.results_search.initial_charge_state',
             selected=True,
             label='Initial Charge State',
         ),
         Column(
-            search_quantity='data.charge.charge_transition',
+            search_quantity='data.results_search.charge_transition',
             selected=True,
             label='Charge Transition Level (Delta)',
         ),
         Column(
-            search_quantity='data.capture.electrical_capture_cross_section',
+            search_quantity='data.results_search.electrical_capture_cross_section',
             selected=True,
             label='Electrical Capture Cross Section',
         ),
         Column(
-            search_quantity='data.capture.capture_mechanism',
+            search_quantity='data.results_search.capture_mechanism',
             selected=False,
             label='Capture Mechanism',
         ),
         Column(
-            search_quantity='data.energy.energy_level_valband',
+            search_quantity='data.results_search.energy_level',
             selected=False,
             label='Energy Level (Valence Band)',
         ),
-        Column(
-            search_quantity='data.energy.energy_level_conband',
-            selected=False,
-            label='Energy Level (Conduction Band)',
-        ),
-
     ],
     filters_locked={'entry_type': 'SiCDefect',},
     dashboard = Dashboard.parse_obj(widgets)

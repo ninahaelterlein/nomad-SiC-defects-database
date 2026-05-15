@@ -103,6 +103,7 @@ class MyProperties(Properties):
                 repeats=False,
     )
 
+
 def add_defect_results(archive):
     if archive.results is None:
         archive.results = Results()

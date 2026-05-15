@@ -8,6 +8,7 @@ add more suggestions to the intrinsic components list,
 
 from nomad.datamodel.data import ArchiveSection
 from nomad.metainfo import Quantity
+from nomad.datamodel.results import Material
 
 from ..utils import add_defect_results
 
@@ -61,6 +62,9 @@ class Comps(ArchiveSection):
         if self.microscopic_defect:
             archive.results.properties.defect.microscopic_defect = self.microscopic_defect
         if self.extrinsic_elements:
+            if not archive.results.material:
+                archive.results.material = Material()
+                archive.results.material.elements = self.extrinsic_elements
             archive.results.properties.defect.extrinsic_elements = self.extrinsic_elements
         if self.intrinsic_components:
             archive.results.properties.defect.intrinsic_components = self.intrinsic_components
