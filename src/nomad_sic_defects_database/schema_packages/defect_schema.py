@@ -26,10 +26,19 @@ from .schema_sections import (
     Energy,
 )
 
+#for plot
+import plotly.graph_objects as go
+from nomad.datamodel.metainfo.plot import (
+    PlotlyFigure, 
+    PlotSection,
+)
+
+from .utils import plot_defect_level
+
 m_package = SchemaPackage()
 
 
-class SiCDefect(Schema):
+class SiCDefect(Schema, PlotSection):
 
     m_def = Section(
         label='SiC Defect',
@@ -49,6 +58,20 @@ class SiCDefect(Schema):
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
 
+
+        #plot defect level in bandstructure
+        if archive.results.properties.defect.energy_level is not None:
+            fig = plot_defect_level(
+                archive, 
+                archive.results.properties.defect.energy_level
+                )
+
+            self.figures = [
+                PlotlyFigure(
+                label='Defect Level',
+                figure=fig.to_plotly_json()
+             )
+            ]
 
         #mirror results (only needed now, because of search issues, can be removed later)
         if self.results_search is None:
