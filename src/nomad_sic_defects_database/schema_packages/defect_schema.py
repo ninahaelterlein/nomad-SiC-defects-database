@@ -8,9 +8,14 @@ from typing import (
 if TYPE_CHECKING:
     pass
 
+#for plot
 from nomad.datamodel.data import (
     Schema,
     UseCaseElnCategory,
+)
+from nomad.datamodel.metainfo.plot import (
+    PlotlyFigure,
+    PlotSection,
 )
 from nomad.metainfo import (
     SchemaPackage,
@@ -25,14 +30,6 @@ from .schema_sections import (
     DefectSearchProjection,
     Energy,
 )
-
-#for plot
-import plotly.graph_objects as go
-from nomad.datamodel.metainfo.plot import (
-    PlotlyFigure, 
-    PlotSection,
-)
-
 from .utils import plot_defect_level
 
 m_package = SchemaPackage()

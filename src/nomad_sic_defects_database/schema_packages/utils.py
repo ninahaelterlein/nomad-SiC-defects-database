@@ -108,6 +108,8 @@ future code # --- SiC parameters ---
 
 """
 
+#for plot
+import plotly.graph_objects as go
 from nomad.datamodel.results import (
     Properties,
     Results,
@@ -121,13 +123,6 @@ from nomad.metainfo import (
 from nomad.metainfo.elasticsearch_extension import (
     Elasticsearch,
     material_entry_type,
-)
-
-#for plot
-import plotly.graph_objects as go
-from nomad.datamodel.metainfo.plot import (
-    PlotlyFigure,
-    PlotSection,
 )
 
 
@@ -240,7 +235,7 @@ def plot_defect_level(archive, defect_level):
     fig.add_trace(
         go.Scatter(
             x=[0, 1],
-            y=[0, 0],
+            y=[Ev, Ev],
             mode='lines',
             line=dict(color='grey', width=8),
             name='Valence Band Maximum',
