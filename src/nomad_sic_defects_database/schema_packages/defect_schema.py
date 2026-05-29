@@ -30,7 +30,10 @@ from .schema_sections import (
     DefectSearchProjection,
     Energy,
 )
-from .utils import plot_defect_level
+from .utils import (
+    plot_defect_level,
+    plot_table,
+)
 
 m_package = SchemaPackage()
 
@@ -55,20 +58,33 @@ class SiCDefect(Schema, PlotSection):
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
 
-
-        #plot defect level in bandstructure
-        if archive.results.properties.defect.energy_level is not None:
-            fig = plot_defect_level(
-                archive, 
-                archive.results.properties.defect.energy_level
-                )
+        #plot table with defect properties
+        if archive.results.properties.defect is not None:
+            fig = plot_table(archive)
 
             self.figures = [
                 PlotlyFigure(
-                label='Defect Level',
+                label='Defect Properties',
                 figure=fig.to_plotly_json()
              )
             ]
+
+        #plot defect level in bandstructure
+        if archive.results.properties.defect.energy_level is not None:
+            fig2 = plot_defect_level(
+                archive, 
+                archive.results.properties.defect.energy_level
+                )
+        
+
+            self.figures.append(
+                PlotlyFigure(
+                label='Defect Level',
+                figure=fig2.to_plotly_json()
+             )
+            )
+        
+
 
         #mirror results (only needed now, because of search issues, can be removed later)
         if self.results_search is None:
