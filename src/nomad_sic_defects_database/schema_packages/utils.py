@@ -1,111 +1,6 @@
-"""here, the results section will be defined/worked on
-
-future code # --- SiC parameters ---
-            Eg = 3.23         # 4H-SiC bandgap in eV @RT (Ioffe)
-            Ev = 0.0
-            Ec = Eg
-
-            # Example defect levels
-            defect_level = archive.results.properties.defect.energy_level
-
-            fig = go.Figure()
-
-            # -------------------------
-            # Band regions
-            # -------------------------
-
-            # Valence band
-            fig.add_shape(
-                type="rect",
-                xref="x",
-                yref="y",
-                x0=0, x1=1,
-                y0=-1, y1=Ev,
-                fillcolor="royalblue",
-                opacity=0.25,
-                line_width=0,
-            )
-
-            # Conduction band
-            fig.add_shape(
-                type="rect",
-                xref="x",
-                yref="y",
-                x0=0, x1=1,
-                y0=Ec, y1=Ec + 1,
-                fillcolor="orange",
-                opacity=0.25,
-                line_width=0,
-            )
-
-            # Band edges
-            fig.add_hline(y=Ev, line_width=3, line_color="blue")
-            fig.add_hline(y=Ec, line_width=3, line_color="orange")
-
-            # -------------------------
-            # Defect levels
-            # -------------------------
-
-            fig.add_hline(
-                y=defect_level,
-                line_width=4,
-                line_dash="dash",
-                line_color="red",
-            )
-
-            fig.add_annotation(
-                x=1.02,
-                y=defect_level,
-                text= "fill name here",
-                showarrow=False,
-                font=dict(color="black", size=14),
-                xref="paper",
-            )
-
-            # -------------------------
-            # Labels
-            # -------------------------
-
-            fig.add_annotation(
-                x=0.5,
-                y=Ec + 0.2,
-                text="Conduction Band",
-                showarrow=False,
-                font=dict(size=16),
-            )
-
-            fig.add_annotation(
-                x=0.5,
-                y=Ev - 0.2,
-                text="Valence Band",
-                showarrow=False,
-                font=dict(size=16),
-            )
-
-            # -------------------------
-            # Layout
-            # -------------------------
-
-            fig.update_layout(
-                width=500,
-                height=700,
-                template="simple_white",
-                showlegend=False,
-                xaxis=dict(
-                    showticklabels=False,
-                    showgrid=False,
-                    zeroline=False,
-                    range=[0, 1],
-                ),
-                yaxis=dict(
-                    title="Energy (eV)",
-                    range=[-0.5, Ec + 0.5],
-                ),
-                title="Defect Levels in 4H-SiC",
-            )
-
-            self.figures = [PlotlyFigure(figure=fig.to_plotly_json())]
-
+"""
+here, the results section will be defined/worked on,
+Plots will also be defined here
 """
 
 #for plot
@@ -166,7 +61,7 @@ class Defect(MSection):
         a_elasticsearch=Elasticsearch(material_entry_type),
     )
     initial_charge_state = Quantity(
-        type=int,
+        type=str,
         shape=[],
         description="""
         Initial charge state of the defect

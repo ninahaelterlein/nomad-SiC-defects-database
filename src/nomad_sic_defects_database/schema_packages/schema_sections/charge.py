@@ -12,13 +12,24 @@ from ..utils import add_defect_results
 class Charge(ArchiveSection):
 
     initial_charge_state = Quantity(
-        type=int,
+        type=str,
         shape=[],
         description="""
         Initial charge state of the defect
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
+            component = 'EnumEditQuantity',
+            props = dict(
+                suggestions=[
+                    '---',
+                    '--',
+                    '-',
+                    '0',
+                    '+',
+                    '++',
+                    '+++',
+                ]
+            )
         ),
     )
 

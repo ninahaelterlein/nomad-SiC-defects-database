@@ -67,4 +67,7 @@ class Comps(ArchiveSection):
             archive.results.material.elements = self.extrinsic_elements
             archive.results.properties.defect.extrinsic_elements = self.extrinsic_elements
         if self.intrinsic_components:
+            if not archive.results.material:
+                archive.results.material = Material()
+            archive.results.material.functional_type = self.intrinsic_components
             archive.results.properties.defect.intrinsic_components = self.intrinsic_components

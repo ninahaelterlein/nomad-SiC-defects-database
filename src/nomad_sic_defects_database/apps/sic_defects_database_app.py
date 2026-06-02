@@ -14,8 +14,15 @@ from importlib.resources import files
 import yaml
 from nomad.config.models.ui import (
     App,
+    Axis,
+    AxisScale,
     Column,
     Dashboard,
+    Menu,
+    MenuItemHistogram,
+    MenuItemTerms,
+    MenuSizeEnum,
+    ScaleEnum,
     SearchQuantities,
 )
 
@@ -30,7 +37,7 @@ except Exception as e:
     raise RuntimeError(f'Failed to load widgets from YAML file: {e}')
 
 
-schema = 'nomad_sic_defects_database.schema.defect_schema'
+schema = 'nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect'
 
 sic_defects_database_app = App(
     label = 'The SiC Defects Database',
@@ -39,6 +46,16 @@ sic_defects_database_app = App(
     description = 'Search entries of the SiC Defects Database',
     search_quantities = SearchQuantities(include=[f'*#{schema}']),
     columns = [
+        Column(
+            search_quantity='entry_name',
+            selected=True,
+            label='Entry Name',
+        ),
+        Column(
+            search_quantity='data.results_search.microscopic_defect',
+            selected=True,
+            label='Microscopic Defect',
+        ),
         Column(
             search_quantity='results.material.elements',
             selected=False,
@@ -71,32 +88,87 @@ sic_defects_database_app = App(
         ),
         Column(
             search_quantity='data.results_search.energy_level',
-            selected=False,
+            selected=True,
             label='Energy Level (Valence Band)',
         ),
     ],
-    filters_locked={'entry_type': 'SiCDefect',},
-    dashboard = Dashboard.parse_obj(widgets)
-)
-"""
     menu = Menu(
-        title = 'Energy Level',
-        items = [
-            MenuItemHistogram(
-                x=Axis(
-                    search_quantity = f'data.defect_level#{schema}',
-                    scale =ScaleEnum.LINEAR,
-                    title = 'Defect Level',
-                    unit = 'eV',
-                ),
-                y=AxisScale(
-                    scale = ScaleEnum.LINEAR,
-                ),
+        items=[
+            Menu(
                 title = 'Defect Level',
-                show_input = False,
-                mbins = 30,
+                size=MenuSizeEnum.MD,
+                items = [
+                    MenuItemHistogram(
+                        x=Axis(
+                        search_quantity = f'data.results_search.energy_level#{schema}',
+                        scale =ScaleEnum.LINEAR,
+                        title = 'Defect Level',
+                        #unit = 'eV',
+                        ),
+                        y=AxisScale(
+                        scale = ScaleEnum.LINEAR,
+                        ),
+                        title = 'Energy Level (Valence Band)',
+                        show_input = False,
+                        mbins = 30,
+                    ),
+                ],
+            ),
+            Menu(
+                title = 'Capture',
+                size=MenuSizeEnum.MD,
+                items = [
+                    MenuItemHistogram(
+                        x=Axis(
+                        search_quantity = f'data.results_search.electrical_capture_cross_section#{schema}',
+                        scale =ScaleEnum.LOG,
+                        title = 'Electrical Capture Cross Section',
+                        #unit = 'cm^2',
+                        ),
+                        y=AxisScale(
+                        scale = ScaleEnum.LINEAR,
+                        ),
+                        title = 'Electrical Capture Cross Section',
+                        show_input = False,
+                        mbins = 30,
+                    ),
+                    MenuItemTerms(
+                        search_quantity = f'data.results_search.capture_mechanism#{schema}',
+                        title = 'Capture Mechanism',
+                        show_input = True,
+                        options = 3,
+                        width = 10,
+                    ),
+                ],
+            ),
+            Menu(
+                title = 'Charge',
+                size = MenuSizeEnum.MD,
+                items = [
+                    MenuItemTerms(
+                        search_quantity = f'data.results_search.initial_charge_state#{schema}',
+                        title = 'Initial Charge State',
+                        show_input = True,
+                        options = 7,
+                        width = 10,
+                    ),
+                    MenuItemHistogram(
+                        x=Axis(
+                        search_quantity = f'data.results_search.charge_transition#{schema}',
+                        scale =ScaleEnum.LINEAR,
+                        title = 'Charge Transition Level (Delta)',
+                        ),
+                        y=AxisScale(
+                        scale = ScaleEnum.LINEAR,
+                        ),
+                        title = 'Charge Transition Level (Delta)',
+                        show_input = False,
+                        mbins = 3,
+                    ),
+                ],  
             ),
         ],
     ),
+    filters_locked={'entry_type': 'SiCDefect',},
+    dashboard = Dashboard.parse_obj(widgets)
 )
-"""

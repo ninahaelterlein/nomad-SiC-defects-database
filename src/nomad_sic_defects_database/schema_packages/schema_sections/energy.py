@@ -42,8 +42,10 @@ class Energy(ArchiveSection):
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
 
+        bandgap = 3.23
+
         add_defect_results(archive)
         if self.energy_level_valband is not None:
             archive.results.properties.defect.energy_level = self.energy_level_valband
-#        elif self.energy_level_conband is not None:
-#            archive.results.properties.defect.energy_level = bandgap -self.energy_level_conband
+        elif self.energy_level_conband is not None:
+            archive.results.properties.defect.energy_level = bandgap - self.energy_level_conband

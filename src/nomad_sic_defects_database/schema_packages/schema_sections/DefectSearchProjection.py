@@ -44,7 +44,7 @@ class DefectSearchProjection(ArchiveSection):
     )
 
     initial_charge_state = Quantity(
-        type=int,
+        type=str,
         shape=[],
         description="""
         Initial charge state of the defect
@@ -63,7 +63,7 @@ class DefectSearchProjection(ArchiveSection):
         type=str,
         shape=[],
         description="""
-        Capture mechanism of the defect (eg multi-phonon, Auger, ...)
+        Capture mechanism of the defect (eg multi-phonon, cascade capture, ...)
         """,
     )
 
