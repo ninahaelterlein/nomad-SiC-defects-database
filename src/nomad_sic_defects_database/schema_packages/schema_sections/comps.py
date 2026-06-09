@@ -2,7 +2,7 @@
 
 *name, extrinsic elements, intrinsic components and microscopic defects*
 
-ToDo: 
+ToDo:
 add more suggestions to the intrinsic components list,
 """
 
@@ -14,7 +14,6 @@ from ..utils import add_defect_results
 
 
 class Components(ArchiveSection):
-
     extrinsic_elements = Quantity(
         type=str,
         shape=['*'],
@@ -22,7 +21,7 @@ class Components(ArchiveSection):
         Extrinsic elements involved in the defect (one per entry, eg 'N', 'Al', 'B', ...)
         """,
         a_eln=dict(
-            component = 'StringEditQuantity',
+            component='StringEditQuantity',
         ),
     )
 
@@ -33,26 +32,26 @@ class Components(ArchiveSection):
         Intrinsic components involved in the defect
         """,
         a_eln=dict(
-            component = 'EnumEditQuantity',
-            props = dict(
+            component='EnumEditQuantity',
+            props=dict(
                 suggestions=[
                     'V_Si',
                     'V_C',
                     'Si_i',
                     'C_i',
                 ]
-            )
-        ),  
+            ),
+        ),
     )
 
-    microscopic_defect = Quantity(  
+    microscopic_defect = Quantity(
         type=str,
         shape=[],
         description="""
         Microscopic defect structure
         """,
         a_eln=dict(
-            component = 'StringEditQuantity',
+            component='StringEditQuantity',
         ),
     )
 
@@ -60,14 +59,20 @@ class Components(ArchiveSection):
         super().normalize(archive, logger)
         add_defect_results(archive)
         if self.microscopic_defect:
-            archive.results.properties.defect.microscopic_defect = self.microscopic_defect
+            archive.results.properties.defect.microscopic_defect = (
+                self.microscopic_defect
+            )
         if self.extrinsic_elements:
             if not archive.results.material:
                 archive.results.material = Material()
             archive.results.material.elements = self.extrinsic_elements
-            archive.results.properties.defect.extrinsic_elements = self.extrinsic_elements
+            archive.results.properties.defect.extrinsic_elements = (
+                self.extrinsic_elements
+            )
         if self.intrinsic_components:
             if not archive.results.material:
                 archive.results.material = Material()
             archive.results.material.functional_type = self.intrinsic_components
-            archive.results.properties.defect.intrinsic_components = self.intrinsic_components
+            archive.results.properties.defect.intrinsic_components = (
+                self.intrinsic_components
+            )

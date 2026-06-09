@@ -2,7 +2,6 @@ from nomad.config.models.plugins import SchemaPackageEntryPoint
 
 
 class DefectSchemaPackageEntryPoint(SchemaPackageEntryPoint):
-
     def load(self):
         from nomad_sic_defects_database.schema_packages.defect_schema import m_package
 

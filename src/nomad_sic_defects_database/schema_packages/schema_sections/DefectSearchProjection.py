@@ -1,8 +1,8 @@
 """
-This is just a helper class to be able to show the search results in the app. 
+This is just a helper class to be able to show the search results in the app.
 (as long as I cannot use the custom results as search quantities.)
 It should not be used to fill in custom data. The quantities defined here are the
-same quantities that are defined in the results section. 
+same quantities that are defined in the results section.
 """
 
 from nomad.datamodel.data import ArchiveSection
@@ -10,7 +10,6 @@ from nomad.metainfo import Quantity
 
 
 class DefectSearchProjection(ArchiveSection):
-
     name = Quantity(
         type=str,
         shape=[],
@@ -18,7 +17,7 @@ class DefectSearchProjection(ArchiveSection):
         Name of the defect (if known)
         """,
     )
-    
+
     extrinsic_elements = Quantity(
         type=str,
         shape=['*'],
@@ -35,7 +34,7 @@ class DefectSearchProjection(ArchiveSection):
         """,
     )
 
-    microscopic_defect = Quantity(  
+    microscopic_defect = Quantity(
         type=str,
         shape=[],
         description="""
@@ -90,7 +89,3 @@ class DefectSearchProjection(ArchiveSection):
         Type of the defect: (double) acceptor (--like), (double) donor (++like), ...
         """,
     )
-
-
-
- 

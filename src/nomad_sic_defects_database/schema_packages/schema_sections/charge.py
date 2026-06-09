@@ -10,7 +10,6 @@ from ..utils import add_defect_results
 
 
 class Charge(ArchiveSection):
-
     initial_charge_state = Quantity(
         type=str,
         shape=[],
@@ -18,8 +17,8 @@ class Charge(ArchiveSection):
         Initial charge state of the defect
         """,
         a_eln=dict(
-            component = 'EnumEditQuantity',
-            props = dict(
+            component='EnumEditQuantity',
+            props=dict(
                 suggestions=[
                     '---',
                     '--',
@@ -29,7 +28,7 @@ class Charge(ArchiveSection):
                     '++',
                     '+++',
                 ]
-            )
+            ),
         ),
     )
 
@@ -40,7 +39,7 @@ class Charge(ArchiveSection):
         Charge transition level of the defect (Delta)
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
+            component='NumberEditQuantity',
         ),
     )
 
@@ -48,11 +47,18 @@ class Charge(ArchiveSection):
         super().normalize(archive, logger)
         add_defect_results(archive)
         if self.initial_charge_state is not None:
-            archive.results.properties.defect.initial_charge_state = self.initial_charge_state
+            archive.results.properties.defect.initial_charge_state = (
+                self.initial_charge_state
+            )
         if self.charge_transition is not None:
             archive.results.properties.defect.charge_transition = self.charge_transition
-        if archive.results.properties.defect.charge_transition is not None and archive.results.properties.defect.initial_charge_state is not None:
+        if (
+            archive.results.properties.defect.charge_transition is not None
+            and archive.results.properties.defect.initial_charge_state is not None
+        ):
             double = 2
-            factor = "double " if self.charge_transition == double else ""
-            typ = "donor" if self.initial_charge_state in ['0', '+', '++'] else "acceptor"
-            archive.results.properties.defect.defect_type = f"{factor}{typ}-like"
+            factor = 'double ' if self.charge_transition == double else ''
+            typ = (
+                'donor' if self.initial_charge_state in ['0', '+', '++'] else 'acceptor'
+            )
+            archive.results.properties.defect.defect_type = f'{factor}{typ}-like'

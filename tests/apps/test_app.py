@@ -6,5 +6,7 @@ def test_importing_app():
     assert app_entry_point.app.label == 'NewApp'
     #test
 """
+
+
 def test_sanity():
     assert True

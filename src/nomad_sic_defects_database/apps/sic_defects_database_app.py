@@ -1,13 +1,13 @@
 """
 Search Quantities are all defined in data, because nomad.config.models.ui states:
 Controls the quantities that are available in the search interface.
-Search quantities correspond to pieces of information that can be queried in the 
+Search quantities correspond to pieces of information that can be queried in the
 search interface of the app, but also targeted in the rest of the app configuration.
-You can load quantities from custom schemas as search quantities, 
-but note that not all quantities will be loaded: only scalar values are 
-supported at the moment. The include and exlude attributes can use glob syntax to 
+You can load quantities from custom schemas as search quantities,
+but note that not all quantities will be loaded: only scalar values are
+supported at the moment. The include and exlude attributes can use glob syntax to
 target metainfo, e.g. results.* or *.#myschema.schema.MySchema.
-""" 
+"""
 
 from importlib.resources import files
 
@@ -40,12 +40,12 @@ except Exception as e:
 schema = 'nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect'
 
 sic_defects_database_app = App(
-    label = 'The SiC Defects Database',
-    path = 'sic_defects_database',
-    category = 'Defects',
-    description = 'Search entries of the SiC Defects Database',
-    search_quantities = SearchQuantities(include=[f'*#{schema}']),
-    columns = [
+    label='The SiC Defects Database',
+    path='sic_defects_database',
+    category='Defects',
+    description='Search entries of the SiC Defects Database',
+    search_quantities=SearchQuantities(include=[f'*#{schema}']),
+    columns=[
         Column(
             search_quantity='entry_name',
             selected=True,
@@ -97,90 +97,92 @@ sic_defects_database_app = App(
             label='Defect Type',
         ),
     ],
-    menu = Menu(
+    menu=Menu(
         items=[
             Menu(
-                title = 'Defect Level',
+                title='Defect Level',
                 size=MenuSizeEnum.MD,
-                items = [
+                items=[
                     MenuItemHistogram(
                         x=Axis(
-                        search_quantity = f'data.results_search.energy_level#{schema}',
-                        scale =ScaleEnum.LINEAR,
-                        title = 'Defect Level',
-                        #unit = 'eV',
+                            search_quantity=f'data.results_search.energy_level#{schema}',
+                            scale=ScaleEnum.LINEAR,
+                            title='Defect Level',
+                            # unit = 'eV',
                         ),
                         y=AxisScale(
-                        scale = ScaleEnum.LINEAR,
+                            scale=ScaleEnum.LINEAR,
                         ),
-                        title = 'Energy Level (Valence Band)',
-                        show_input = False,
-                        n_bins = 30,
+                        title='Energy Level (Valence Band)',
+                        show_input=False,
+                        n_bins=30,
                     ),
                 ],
             ),
             Menu(
-                title = 'Capture',
+                title='Capture',
                 size=MenuSizeEnum.MD,
-                items = [
+                items=[
                     MenuItemHistogram(
                         x=Axis(
-                        search_quantity = f'data.results_search.electrical_capture_cross_section#{schema}',
-                        scale =ScaleEnum.LOG,
-                        title = 'Electrical Capture Cross Section',
-                        #unit = 'cm^2',
+                            search_quantity=f'data.results_search.electrical_capture_cross_section#{schema}',
+                            scale=ScaleEnum.LOG,
+                            title='Electrical Capture Cross Section',
+                            # unit = 'cm^2',
                         ),
                         y=AxisScale(
-                        scale = ScaleEnum.LINEAR,
+                            scale=ScaleEnum.LINEAR,
                         ),
-                        title = 'Electrical Capture Cross Section',
-                        show_input = False,
-                        n_bins = 30,
+                        title='Electrical Capture Cross Section',
+                        show_input=False,
+                        n_bins=30,
                     ),
                     MenuItemTerms(
-                        search_quantity = f'data.results_search.capture_mechanism#{schema}',
-                        title = 'Capture Mechanism',
-                        show_input = True,
-                        options = 3,
-                        width = 10,
+                        search_quantity=f'data.results_search.capture_mechanism#{schema}',
+                        title='Capture Mechanism',
+                        show_input=True,
+                        options=3,
+                        width=10,
                     ),
                 ],
             ),
             Menu(
-                title = 'Charge',
-                size = MenuSizeEnum.MD,
-                items = [
+                title='Charge',
+                size=MenuSizeEnum.MD,
+                items=[
                     MenuItemTerms(
-                        search_quantity = f'data.results_search.initial_charge_state#{schema}',
-                        title = 'Initial Charge State',
-                        show_input = True,
-                        options = 7,
-                        width = 10,
+                        search_quantity=f'data.results_search.initial_charge_state#{schema}',
+                        title='Initial Charge State',
+                        show_input=True,
+                        options=7,
+                        width=10,
                     ),
                     MenuItemHistogram(
                         x=Axis(
-                        search_quantity = f'data.results_search.charge_transition#{schema}',
-                        scale =ScaleEnum.LINEAR,
-                        title = 'Charge Transition Level (Delta)',
+                            search_quantity=f'data.results_search.charge_transition#{schema}',
+                            scale=ScaleEnum.LINEAR,
+                            title='Charge Transition Level (Delta)',
                         ),
                         y=AxisScale(
-                        scale = ScaleEnum.LINEAR,
+                            scale=ScaleEnum.LINEAR,
                         ),
-                        title = 'Charge Transition (Delta)',
-                        show_input = False,
-                        n_bins = 3,
+                        title='Charge Transition (Delta)',
+                        show_input=False,
+                        n_bins=3,
                     ),
                     MenuItemTerms(
-                        search_quantity = f'data.results_search.defect_type#{schema}',
-                        title = 'Defect Type',
-                        show_input = True,
-                        options = 4,
-                        width = 10,
+                        search_quantity=f'data.results_search.defect_type#{schema}',
+                        title='Defect Type',
+                        show_input=True,
+                        options=4,
+                        width=10,
                     ),
                 ],
             ),
         ],
     ),
-    filters_locked={'entry_type': 'SiCDefect',},
-    dashboard = Dashboard.parse_obj(widgets)
+    filters_locked={
+        'entry_type': 'SiCDefect',
+    },
+    dashboard=Dashboard.parse_obj(widgets),
 )

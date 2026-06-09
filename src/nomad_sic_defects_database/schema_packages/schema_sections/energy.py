@@ -12,56 +12,55 @@ from ..utils import add_defect_results
 
 
 class Energy(ArchiveSection):
-
     energy_level_valband = Quantity(
         type=float,
-        unit = 'eV',
+        unit='eV',
         shape=[],
         description="""
         Energy level of the defect with respect to the valence band maximum (mean value)
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
-            default_display_unit = 'eV',
+            component='NumberEditQuantity',
+            default_display_unit='eV',
         ),
     )
 
     energy_level_valband_uncertainty = Quantity(
         type=float,
-        unit = 'eV',
+        unit='eV',
         shape=[],
         description="""
         Uncertainty of the energy level with respect to the valence band maximum (if known)
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
-            default_display_unit = 'eV',
+            component='NumberEditQuantity',
+            default_display_unit='eV',
         ),
     )
 
     energy_level_conband = Quantity(
         type=float,
-        unit = 'eV',
+        unit='eV',
         shape=[],
         description="""
         Energy level of the defect with respect to the conduction band minimum (mean value)
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
-            default_display_unit = 'eV',
+            component='NumberEditQuantity',
+            default_display_unit='eV',
         ),
     )
 
     energy_level_conband_uncertainty = Quantity(
         type=float,
-        unit = 'eV',
+        unit='eV',
         shape=[],
         description="""
         Uncertainty of the energy level with respect to the conduction band minimum (if known)
         """,
         a_eln=dict(
-            component = 'NumberEditQuantity',
-            default_display_unit = 'eV',
+            component='NumberEditQuantity',
+            default_display_unit='eV',
         ),
     )
 
@@ -74,4 +73,6 @@ class Energy(ArchiveSection):
         if self.energy_level_valband is not None:
             archive.results.properties.defect.energy_level = self.energy_level_valband
         elif self.energy_level_conband is not None:
-            archive.results.properties.defect.energy_level = bandgap - self.energy_level_conband.magnitude
+            archive.results.properties.defect.energy_level = (
+                bandgap - self.energy_level_conband.magnitude
+            )
