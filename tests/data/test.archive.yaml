@@ -1,7 +1,7 @@
 data:
   m_def: nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect
 
-  comps:
+  components:
     microscopic_defect: Vsi
     extrinsic_elements: [N]
     intrinsic_components: [Vsi]
