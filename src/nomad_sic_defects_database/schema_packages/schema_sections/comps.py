@@ -13,7 +13,7 @@ from nomad.metainfo import Quantity
 from ..utils import add_defect_results
 
 
-class Comps(ArchiveSection):
+class Components(ArchiveSection):
 
     extrinsic_elements = Quantity(
         type=str,

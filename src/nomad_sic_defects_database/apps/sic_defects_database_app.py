@@ -78,7 +78,7 @@ sic_defects_database_app = App(
         ),
         Column(
             search_quantity='data.results_search.electrical_capture_cross_section',
-            selected=True,
+            selected=False,
             label='Electrical Capture Cross Section',
         ),
         Column(
@@ -90,6 +90,11 @@ sic_defects_database_app = App(
             search_quantity='data.results_search.energy_level',
             selected=True,
             label='Energy Level (Valence Band)',
+        ),
+        Column(
+            search_quantity='data.results_search.defect_type',
+            selected=True,
+            label='Defect Type',
         ),
     ],
     menu = Menu(
@@ -110,7 +115,7 @@ sic_defects_database_app = App(
                         ),
                         title = 'Energy Level (Valence Band)',
                         show_input = False,
-                        mbins = 30,
+                        n_bins = 30,
                     ),
                 ],
             ),
@@ -130,7 +135,7 @@ sic_defects_database_app = App(
                         ),
                         title = 'Electrical Capture Cross Section',
                         show_input = False,
-                        mbins = 30,
+                        n_bins = 30,
                     ),
                     MenuItemTerms(
                         search_quantity = f'data.results_search.capture_mechanism#{schema}',
@@ -161,11 +166,18 @@ sic_defects_database_app = App(
                         y=AxisScale(
                         scale = ScaleEnum.LINEAR,
                         ),
-                        title = 'Charge Transition Level (Delta)',
+                        title = 'Charge Transition (Delta)',
                         show_input = False,
-                        mbins = 3,
+                        n_bins = 3,
                     ),
-                ],  
+                    MenuItemTerms(
+                        search_quantity = f'data.results_search.defect_type#{schema}',
+                        title = 'Defect Type',
+                        show_input = True,
+                        options = 4,
+                        width = 10,
+                    ),
+                ],
             ),
         ],
     ),

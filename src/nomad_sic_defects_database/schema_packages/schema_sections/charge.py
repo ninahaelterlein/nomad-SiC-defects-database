@@ -51,3 +51,8 @@ class Charge(ArchiveSection):
             archive.results.properties.defect.initial_charge_state = self.initial_charge_state
         if self.charge_transition is not None:
             archive.results.properties.defect.charge_transition = self.charge_transition
+        if archive.results.properties.defect.charge_transition is not None and archive.results.properties.defect.initial_charge_state is not None:
+            double = 2
+            factor = "double " if self.charge_transition == double else ""
+            typ = "donor" if self.initial_charge_state in ['0', '+', '++'] else "acceptor"
+            archive.results.properties.defect.defect_type = f"{factor}{typ}-like"

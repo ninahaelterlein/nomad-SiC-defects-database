@@ -100,6 +100,14 @@ class Defect(MSection):
         """,
         a_elasticsearch=Elasticsearch(material_entry_type),
     )
+    defect_type = Quantity(
+        type=str,
+        shape=[],
+        description="""
+        Type of the defect: (double) acceptor (--like), (double) donor (++like), ...
+        """,
+        a_elasticsearch=Elasticsearch(material_entry_type),
+    )
 
 
 class MyProperties(Properties):
@@ -183,7 +191,7 @@ def plot_defect_level(archive, defect_level):
     fig.add_annotation(
         x=0.62,
         y=defect_level,
-        text=f"{defect_level:.2f}",
+        text=f"{defect_level:.2f} eV",
         showarrow=False,
         font=dict(size=14, color="red"),
         xanchor="left",
@@ -192,7 +200,7 @@ def plot_defect_level(archive, defect_level):
     fig.add_annotation(
         x=1.02,
         y=Ec,
-        text=f"{Ec:.2f}",
+        text=f"{Ec:.2f} eV",
         showarrow=False,
         font=dict(size=14),
         xanchor="left",
@@ -201,7 +209,7 @@ def plot_defect_level(archive, defect_level):
     fig.add_annotation(
         x=1.02,
         y=Ev,
-        text=f"{Ev:.0f}",
+        text=f"{Ev:.0f} eV",
         showarrow=False,
         font=dict(size=14),
         xanchor="left",
@@ -235,7 +243,7 @@ def plot_table(archive):
     eccs = f"{defect.electrical_capture_cross_section:.2f}" if defect.electrical_capture_cross_section else "unavailable"
     capture_mechanism = defect.capture_mechanism if defect.capture_mechanism else "unavailable"
     microscopic_defect = defect.microscopic_defect if defect.microscopic_defect else "unavailable"
-    intrinsic_components = defect.intrinsic_components if defect.intrinsic_components else "unavailable"
+    defect_type = defect.defect_type if defect.defect_type else "unavailable"
     charge_transition = defect.charge_transition if defect.charge_transition else "unavailable"
     initial_charge_state = defect.initial_charge_state if defect.initial_charge_state else "unavailable"
 
@@ -266,12 +274,11 @@ def plot_table(archive):
     # Table content
     # -----------------------------
 
-    c1 = make_cell("intrinsic components", intrinsic_components)
+    c1 = make_cell("defect type", defect_type)
     c2 = make_cell("microscopic defect", microscopic_defect)
-    c3 = make_cell("initial charge state", initial_charge_state)
-
-    c4 = make_cell("charge transition (Δ)", charge_transition)
-    c5 = make_cell("electrical capture cross section", eccs)
+    c4 = make_cell("initial charge state", initial_charge_state)
+    c5 = make_cell("charge transition (Δ)", charge_transition)
+    c3 = make_cell("electrical capture cross section", eccs)
     c6 = make_cell("capture mechanism", capture_mechanism)
 
     # -----------------------------

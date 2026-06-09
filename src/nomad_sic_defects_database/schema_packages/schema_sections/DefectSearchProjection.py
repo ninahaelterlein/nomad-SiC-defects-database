@@ -83,6 +83,14 @@ class DefectSearchProjection(ArchiveSection):
         """,
     )
 
+    defect_type = Quantity(
+        type=str,
+        shape=[],
+        description="""
+        Type of the defect: (double) acceptor (--like), (double) donor (++like), ...
+        """,
+    )
+
 
 
  

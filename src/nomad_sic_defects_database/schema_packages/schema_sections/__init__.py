@@ -1,13 +1,15 @@
 from .capture import Capture
 from .charge import Charge
-from .comps import Comps
+from .comps import Components
 from .DefectSearchProjection import DefectSearchProjection
 from .energy import Energy
+from .ref import Ref
 
 __all__ = [
     "Capture",
     "Charge",
-    "Comps",
+    "Components",
     "Energy",
     "DefectSearchProjection",
+    "Ref",
 ]

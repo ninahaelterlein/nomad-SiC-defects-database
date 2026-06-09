@@ -26,9 +26,10 @@ from nomad.metainfo import (
 from .schema_sections import (
     Capture,
     Charge,
-    Comps,
+    Components,
     DefectSearchProjection,
     Energy,
+    Ref,
 )
 from .utils import (
     plot_defect_level,
@@ -46,10 +47,11 @@ class SiCDefect(Schema, PlotSection):
         categories=[UseCaseElnCategory],
     )
     
-    comps = SubSection(section_def=Comps)
+    components = SubSection(section_def=Components)
     energy = SubSection(section_def=Energy)
     charge = SubSection(section_def=Charge)
     capture = SubSection(section_def=Capture)
+    ref = SubSection(section_def=Ref)
 
     #just for search purposes right at the moment, not to be filled in by the user
     results_search = SubSection(section_def=DefectSearchProjection)
@@ -90,24 +92,23 @@ class SiCDefect(Schema, PlotSection):
         if self.results_search is None:
             self.results_search = DefectSearchProjection()
 
-        if archive.results.properties.defect.energy_level is not None:
-            self.results_search.energy_level = archive.results.properties.defect.energy_level
-        if archive.results.properties.defect.capture_mechanism is not None:
-            self.results_search.capture_mechanism = archive.results.properties.defect.capture_mechanism
-        if archive.results.properties.defect.initial_charge_state is not None:
-            self.results_search.initial_charge_state = archive.results.properties.defect.initial_charge_state
-        if archive.results.properties.defect.charge_transition is not None:
-            self.results_search.charge_transition = archive.results.properties.defect.charge_transition
-        if archive.results.properties.defect.microscopic_defect is not None:
-            self.results_search.microscopic_defect = archive.results.properties.defect.microscopic_defect
-        if archive.results.properties.defect.intrinsic_components is not None:
-            self.results_search.intrinsic_components = archive.results.properties.defect.intrinsic_components
-        if archive.results.properties.defect.extrinsic_elements is not None:
-            self.results_search.extrinsic_elements = archive.results.properties.defect.extrinsic_elements
-        if archive.results.properties.defect.name is not None:
-            self.results_search.name = archive.results.properties.defect.name
-        if archive.results.properties.defect.electrical_capture_cross_section is not None:
-            self.results_search.electrical_capture_cross_section = archive.results.properties.defect.electrical_capture_cross_section
+        defect = archive.results.properties.defect
+
+        for attr in [
+            "energy_level",
+            "capture_mechanism",
+            "initial_charge_state",
+            "charge_transition",
+            "microscopic_defect",
+            "intrinsic_components",
+            "extrinsic_elements",
+            "name",
+            "electrical_capture_cross_section",
+            "defect_type",
+        ]:
+            value = getattr(defect, attr)
+            if value is not None:
+                setattr(self.results_search, attr, value)
 
 
 
