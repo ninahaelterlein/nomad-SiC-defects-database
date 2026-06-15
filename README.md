@@ -1,11 +1,10 @@
 # Nomad SiC Defects Database
- [<img src="docs/assets/nomad_plugin_logo.png" width="200">](https://nomad-lab.eu/prod/v1/staging/docs/plugins/plugins.html)
-
+ ![Nomad Plugin](src="docs/assets/nomad_plugin_logo.png" width="200">)
 ## Introduction
 
 Welcome to the NOMAD plugin for the Silicon Carbide (SiC) Defects Database. This plugin defines a structured data model for experimentally observed defects in SiC, enabling consistent storage, search, and reuse within NOMAD. In future, the data can hopefully be accessed via the NOMAD API and explored in the 'SiC Defect Search App'. 
 
- [<img src="docs/assets/ScreenshotSicDefectApp.png">]
+ ![SiC Defect App](src="docs/assets/ScreenshotSicDefectApp.png">)
 
 ## Overview
 
