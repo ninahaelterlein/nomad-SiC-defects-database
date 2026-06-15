@@ -31,7 +31,7 @@ class Defect(MSection):
     )
     name = Quantity(
         type=str,
-        shape=[],
+        shape=['*'],
         description="""
         Name of the defect (if known)
         """,
@@ -233,6 +233,48 @@ def plot_defect_level(archive, defect_level):
     )
 
     return fig
+
+
+def charge_transition_annotation(archive,fig):
+    
+    initial_charge = archive.results.properties.defect.initial_charge_state
+    delta_q = archive.results.properties.defect.charge_transition
+    defect_level = archive.results.properties.defect.energy_level
+
+    def str_to_charge(s):
+        if s == "0":
+            return 0
+        if "+" in s:
+            return len(s)
+        if "-" in s:
+            return -len(s)
+        raise ValueError(f"Invalid charge state: {s}")
+
+
+    def charge_display(q):
+        if q == 0:
+            return "0"
+        elif q > 0:
+            return f"{q}+" if q > 1 else "+"
+        else:
+            return f"{abs(q)}-" if q < -1 else "-"
+
+
+    def transition_label(initial_charge, delta_q):
+        final_charge = str_to_charge(initial_charge) + delta_q
+        return f"({charge_display(final_charge)}|{charge_display(str_to_charge(initial_charge))})"
+    
+
+    label = transition_label(initial_charge, delta_q)
+
+    fig.add_annotation(
+        x=0.62,
+        y=defect_level+0.25,
+        text=f"{label}",
+        showarrow=False,
+        font=dict(size=14, color="red"),
+        xanchor="left",
+    )
 
 
 def plot_table(archive):

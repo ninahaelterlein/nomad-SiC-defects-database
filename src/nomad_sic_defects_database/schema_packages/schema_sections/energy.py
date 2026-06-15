@@ -6,9 +6,26 @@ ToDo: add energy level with respect to conduction band minimum and band gap
 """
 
 from nomad.datamodel.data import ArchiveSection
-from nomad.metainfo import Quantity
+from nomad.metainfo import Quantity, SubSection
 
 from ..utils import add_defect_results
+
+
+class energy_uncertainty(ArchiveSection):
+    energy_level_uncertainty = Quantity(
+        type=float,
+        unit='eV',
+        shape=[],
+        description="""
+        Uncertainty of the energy level (if known)
+        """,
+        a_eln=dict(
+            component='NumberEditQuantity',
+        ),
+    )
+
+    def normalize(self, archive, logger):
+        super().normalize(archive, logger)
 
 
 class Energy(ArchiveSection):
@@ -21,20 +38,6 @@ class Energy(ArchiveSection):
         """,
         a_eln=dict(
             component='NumberEditQuantity',
-            default_display_unit='eV',
-        ),
-    )
-
-    energy_level_valband_uncertainty = Quantity(
-        type=float,
-        unit='eV',
-        shape=[],
-        description="""
-        Uncertainty of the energy level with respect to the valence band maximum (if known)
-        """,
-        a_eln=dict(
-            component='NumberEditQuantity',
-            default_display_unit='eV',
         ),
     )
 
@@ -47,21 +50,12 @@ class Energy(ArchiveSection):
         """,
         a_eln=dict(
             component='NumberEditQuantity',
-            default_display_unit='eV',
         ),
     )
 
-    energy_level_conband_uncertainty = Quantity(
-        type=float,
-        unit='eV',
-        shape=[],
-        description="""
-        Uncertainty of the energy level with respect to the conduction band minimum (if known)
-        """,
-        a_eln=dict(
-            component='NumberEditQuantity',
-            default_display_unit='eV',
-        ),
+    energy_uncertainty = SubSection(
+        section_def=energy_uncertainty.m_def,
+        repeats=False,
     )
 
     def normalize(self, archive, logger):
@@ -76,3 +70,4 @@ class Energy(ArchiveSection):
             archive.results.properties.defect.energy_level = (
                 bandgap - self.energy_level_conband.magnitude
             )
+

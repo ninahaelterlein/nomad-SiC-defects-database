@@ -18,6 +18,7 @@ from nomad.datamodel.metainfo.plot import (
     PlotSection,
 )
 from nomad.metainfo import (
+    Quantity,
     SchemaPackage,
     Section,
     SubSection,
@@ -29,9 +30,12 @@ from .schema_sections import (
     Components,
     DefectSearchProjection,
     Energy,
+    Material,
     Ref,
 )
 from .utils import (
+    add_defect_results,
+    charge_transition_annotation,
     plot_defect_level,
     plot_table,
 )
@@ -46,6 +50,18 @@ class SiCDefect(Schema, PlotSection):
         categories=[UseCaseElnCategory],
     )
 
+    name = Quantity(
+        type = str,
+        shape = ['*'],
+        description = """
+        given names for the defect type
+        """,
+        a_eln=dict(
+            component = 'StringEditQuantity',
+        )
+    )
+
+    material = SubSection(section_def=Material)
     components = SubSection(section_def=Components)
     energy = SubSection(section_def=Energy)
     charge = SubSection(section_def=Charge)
@@ -57,6 +73,15 @@ class SiCDefect(Schema, PlotSection):
 
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
+
+        add_defect_results(archive)
+        if self.name is not None:
+            archive.results.properties.defect.name = self.name
+            #project to materials to be able to search for it
+            if not archive.results.material:
+                archive.results.material = Material()
+            archive.results.material.compound_type = self.name
+
 
         # plot table with defect properties
         if archive.results.properties.defect is not None:
@@ -71,6 +96,9 @@ class SiCDefect(Schema, PlotSection):
             fig2 = plot_defect_level(
                 archive, archive.results.properties.defect.energy_level
             )
+            if archive.results.properties.defect.initial_charge_state is not None and archive.results.properties.defect.charge_transition is not None:
+                #add annotation for charge transition:
+                charge_transition_annotation(archive,fig2)
 
             self.figures.append(
                 PlotlyFigure(label='Defect Level', figure=fig2.to_plotly_json())
@@ -83,6 +111,7 @@ class SiCDefect(Schema, PlotSection):
         defect = archive.results.properties.defect
 
         for attr in [
+            'name',
             'energy_level',
             'capture_mechanism',
             'initial_charge_state',

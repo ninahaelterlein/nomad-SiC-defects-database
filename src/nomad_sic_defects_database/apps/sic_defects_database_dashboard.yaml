@@ -19,6 +19,18 @@ widgets:
     show_input: true
     type: terms
     title: 'Intrinsic Components'
+  - layout:
+      lg: {h: 6, minH: 3, minW: 3, w: 6, x: 12, y: 0}
+      md: {h: 4, minH: 3, minW: 3, w: 6, x: 12, y: 4}
+      sm: {h: 6, minH: 3, minW: 3, w: 4, x: 0, y: 10}
+      xl: {h: 6, minH: 3, minW: 3, w: 6, x: 14, y: 8}
+      xxl: {h: 6, minH: 3, minW: 3, w: 6, x: 14, y: 8}
+    quantity: 'data.results_search.energy_level#nomad_sic_defects_database.schema_packages.defect_schema.SiCDefect'
+    scale: linear
+    show_input: true
+    type: histogram
+    title: 'Energy Level'
+      
  # - layout:
  #     lg: {h: 8, minH: 8, minW: 12, w: 12, x: 0, y: 0}
  #     md: {h: 8, minH: 8, minW: 12, w: 12, x: 0, y: 0}
@@ -34,4 +46,4 @@ widgets:
  #   y:
  #     title: "Energy Level"
  #   title: ""
-    
+

@@ -52,6 +52,11 @@ sic_defects_database_app = App(
             label='Entry Name',
         ),
         Column(
+            search_quantity='results.material.compound_type',
+            selected=True,
+            label='Name',
+        ),
+        Column(
             search_quantity='data.results_search.microscopic_defect',
             selected=True,
             label='Microscopic Defect',

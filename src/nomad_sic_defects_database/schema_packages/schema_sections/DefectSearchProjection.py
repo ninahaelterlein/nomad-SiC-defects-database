@@ -12,7 +12,7 @@ from nomad.metainfo import Quantity
 class DefectSearchProjection(ArchiveSection):
     name = Quantity(
         type=str,
-        shape=[],
+        shape=['*'],
         description="""
         Name of the defect (if known)
         """,

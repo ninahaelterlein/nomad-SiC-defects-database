@@ -21,7 +21,6 @@ class Capture(ArchiveSection):
         """,
         a_eln=dict(
             component='NumberEditQuantity',
-            default_display_unit='cm**2',
         ),
     )
 
