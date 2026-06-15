@@ -1,5 +1,5 @@
 # Nomad SiC Defects Database
- <img src="docs/assets/nomad_plugin_logo.png" alt="Nomad Plugin" width="200">
+ <img src="docs/assets/nomad-plugin-logo.png" alt="Nomad Plugin" width="200">
 
 ## Introduction
 
