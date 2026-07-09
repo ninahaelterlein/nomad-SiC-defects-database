@@ -5,9 +5,13 @@ data:
     microscopic_defect: Vsi
     extrinsic_elements: [N]
     intrinsic_components: [Vsi]
+    IntrinsicComponents:
+      - m_def: nomad_sic_defects_database.schema_packages.schema_sections.comps.IntrinsicType
+        type: vacancy
+        lattice_site: Si
 
   charge:
-    initial_charge_state: 0
+    initial_charge_state: ---
     charge_transition: 1
 
   capture:
@@ -15,3 +19,7 @@ data:
 
   energy:
     energy_level_conband: 1.5
+  
+  material:
+    conduction_type: n-type
+    doping_concentration: 20000000000000.0
