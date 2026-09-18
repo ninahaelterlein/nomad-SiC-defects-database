@@ -67,7 +67,12 @@ class Energy(ArchiveSection):
         if self.energy_level_valband is not None:
             archive.results.properties.defect.energy_level = self.energy_level_valband
         elif self.energy_level_conband is not None:
-            archive.results.properties.defect.energy_level = (
-                bandgap - self.energy_level_conband.magnitude
-            )
+            if  self.energy_level_conband.magnitude > 0:
+                archive.results.properties.defect.energy_level = (
+                    round(bandgap - self.energy_level_conband.magnitude, 2)
+                )
+            elif self.energy_level_conband.magnitude < 0:
+                archive.results.properties.defect.energy_level = (
+                    round(bandgap + self.energy_level_conband.magnitude, 2)
+                )
 

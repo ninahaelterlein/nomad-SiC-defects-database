@@ -42,6 +42,15 @@ class Ref(ArchiveSection):
         a_eln=dict(component='StringEditQuantity'),
     )
 
+    title = Quantity(
+        type=str,
+        shape=[],
+        description="""
+    The title of the publication from which the data was taken.
+                    """,
+        a_eln=dict(component='StringEditQuantity'),
+    )
+
     journal = Quantity(
         type=str,
         shape=[],

@@ -8,7 +8,7 @@ class Material(ArchiveSection):
         type=str,
         shape = [],
         description = """
-        SiC polytype
+        SiC polytype, e.g., 3C, 2H, 4H, 6H
         """,
         a_eln=dict(
             component='EnumEditQuantity',

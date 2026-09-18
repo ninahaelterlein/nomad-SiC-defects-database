@@ -14,7 +14,10 @@ class Charge(ArchiveSection):
         type=str,
         shape=[],
         description="""
-        Initial charge state of the defect
+        THIS IS ALWAYS THE "SMALLER" CHARGE STATE, e.g., for a charge transition of -3/0, the initial charge state is -3.
+        Initial charge state of the defect (possible values: '---' (3-), '--' (2-), '-', '0', '+', '++', '+++', 
+        often also given as eg (-3/0). Here, initial charge state is -3, final charge state is 0, and the charge transition is 3).
+        Sometimes, '=' is used as '--'
         """,
         a_eln=dict(
             component='EnumEditQuantity',
@@ -36,17 +39,37 @@ class Charge(ArchiveSection):
         type=int,
         shape=[],
         description="""
-        Charge transition level of the defect (Delta)
+        Charge transition level of the defect (Delta of initial and final charge states, e.g., 1 for single transition, 2 for double transition), not an energy value.
         """,
         a_eln=dict(
             component='NumberEditQuantity',
         ),
     )
 
+    @staticmethod
+    def normalize_charge_state(value):
+        if value is None:
+            return None
+
+        value = str(value).strip()
+
+        # Bereits korrekt: "+", "++", "-", "---", ...
+        if all(c in "+-" for c in value):
+            return value
+
+        # "2+" -> "++", "3-" -> "---"
+        if value[:-1].isdigit() and value[-1] in "+-":
+            return value[-1] * int(value[:-1])
+
+        # z.B. "0"
+        return value
+
     def normalize(self, archive, logger):
         super().normalize(archive, logger)
         add_defect_results(archive)
         if self.initial_charge_state is not None:
+            #normalize charge state
+            self.initial_charge_state = self.normalize_charge_state(self.initial_charge_state)
             archive.results.properties.defect.initial_charge_state = (
                 self.initial_charge_state
             )
