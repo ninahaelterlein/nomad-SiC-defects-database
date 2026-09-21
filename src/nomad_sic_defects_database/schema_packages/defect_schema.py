@@ -17,13 +17,13 @@ from nomad.datamodel.metainfo.plot import (
     PlotlyFigure,
     PlotSection,
 )
+from nomad.datamodel.results import Material as Mat
 from nomad.metainfo import (
     Quantity,
     SchemaPackage,
     Section,
     SubSection,
 )
-from nomad.datamodel.results import Material as Mat
 
 from .schema_sections import (
     Capture,

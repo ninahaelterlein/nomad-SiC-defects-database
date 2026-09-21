@@ -67,7 +67,7 @@ sic_defects_database_app = App(
             label='Extrinsic Elements',
         ),
         Column(
-            search_quantity=f'results.material.functional_type',
+            search_quantity='results.material.functional_type',
             selected=False,
             label='Intrinsic Elements',
         ),
