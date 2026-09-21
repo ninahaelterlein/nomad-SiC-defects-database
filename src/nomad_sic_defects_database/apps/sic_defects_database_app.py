@@ -57,7 +57,7 @@ sic_defects_database_app = App(
             label='Name',
         ),
         Column(
-            search_quantity='data.results_search.microscopic_defect',
+            search_quantity=f'data.results_search.microscopic_defect#{schema}',
             selected=True,
             label='Microscopic Defect',
         ),
@@ -67,39 +67,44 @@ sic_defects_database_app = App(
             label='Extrinsic Elements',
         ),
         Column(
-            search_quantity='data.results_search.intrinsic_components',
+            search_quantity=f'results.material.functional_type',
             selected=False,
             label='Intrinsic Elements',
         ),
         Column(
-            search_quantity='data.results_search.initial_charge_state',
+            search_quantity=f'data.results_search.initial_charge_state#{schema}',
             selected=True,
             label='Initial Charge State',
         ),
         Column(
-            search_quantity='data.results_search.charge_transition',
+            search_quantity=f'data.results_search.charge_transition#{schema}',
             selected=True,
             label='Charge Transition Level (Delta)',
         ),
         Column(
-            search_quantity='data.results_search.electrical_capture_cross_section',
+            search_quantity=f'data.results_search.electrical_capture_cross_section#{schema}',
             selected=False,
             label='Electrical Capture Cross Section',
         ),
         Column(
-            search_quantity='data.results_search.capture_mechanism',
+            search_quantity=f'data.results_search.capture_mechanism#{schema}',
             selected=False,
             label='Capture Mechanism',
         ),
         Column(
-            search_quantity='data.results_search.energy_level',
+            search_quantity=f'data.results_search.energy_level#{schema}',
             selected=True,
             label='Energy Level (Valence Band)',
         ),
         Column(
-            search_quantity='data.results_search.defect_type',
+            search_quantity=f'data.results_search.defect_type#{schema}',
             selected=True,
             label='Defect Type',
+        ),
+        Column(
+            search_quantity=f'data.material.polytype#{schema}',
+            selected=True,
+            label="SiC Polytype",
         ),
     ],
     menu=Menu(
@@ -162,28 +167,28 @@ sic_defects_database_app = App(
                         options=7,
                         width=10,
                     ),
-                    MenuItemHistogram(
-                        x=Axis(
-                            search_quantity=f'data.results_search.charge_transition#{schema}',
-                            scale=ScaleEnum.LINEAR,
-                            title='Charge Transition Level (Delta)',
-                        ),
-                        y=AxisScale(
-                            scale=ScaleEnum.LINEAR,
-                        ),
-                        title='Charge Transition (Delta)',
-                        show_input=False,
-                        n_bins=3,
-                    ),
                     MenuItemTerms(
                         search_quantity=f'data.results_search.defect_type#{schema}',
                         title='Defect Type',
                         show_input=True,
-                        options=4,
+                        options=7,
                         width=10,
                     ),
                 ],
             ),
+            Menu(
+                title='Material',
+                size=MenuSizeEnum.MD,
+                items=[
+                    MenuItemTerms(
+                        search_quantity=f'data.material.polytype#{schema}',
+                        title='SiC Polytype',
+                        show_input=True,
+                        options=4,
+                        width=10,
+                    )
+                ]
+            )
         ],
     ),
     filters_locked={

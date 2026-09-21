@@ -23,6 +23,7 @@ from nomad.metainfo import (
     Section,
     SubSection,
 )
+from nomad.datamodel.results import Material as Mat
 
 from .schema_sections import (
     Capture,
@@ -79,7 +80,7 @@ class SiCDefect(Schema, PlotSection):
             archive.results.properties.defect.name = self.name
             #project to materials to be able to search for it
             if not archive.results.material:
-                archive.results.material = Material()
+                archive.results.material = Mat()
             archive.results.material.compound_type = self.name
 
 

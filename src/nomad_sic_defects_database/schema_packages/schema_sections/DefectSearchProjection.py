@@ -51,7 +51,7 @@ class DefectSearchProjection(ArchiveSection):
     )
 
     charge_transition = Quantity(
-        type=float,
+        type=int,
         shape=[],
         description="""
         Charge transition level of the defect (Delta)
